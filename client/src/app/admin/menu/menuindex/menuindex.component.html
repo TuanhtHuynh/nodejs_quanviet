@@ -1,0 +1,41 @@
+<div class="categories-wrapper">
+    <app-alertmessage></app-alertmessage>
+    <div class="admin__top">
+        <div></div>
+        <a [routerLink]="['/admin/menu/new']"
+           class="admin__btn admin__btn--primary">Thêm menu</a>
+    </div>
+    <div *ngIf="listMenus">Hiển thị {{ listMenus.length }} menu</div>
+    <div class="table__response">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="table__header">
+                        <span class="ml">#</span>
+                    </th>
+                    <th>
+                        <span class="ml">Tên menu</span>
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table__row"
+                    *ngFor="let menu of listMenus">
+                    <td class="table__cell text-center">{{ menu._id }}</td>
+                    <td class="table__cell">{{ menu.menu_name }}</td>
+                    <td class="table__cell">
+                        <a class="admin__btn--outline admin__btn--warn mr"
+                           [routerLink]="['edit', menu._id]">
+                            <i class="far fa-edit"></i>
+                        </a>
+                        <button class="admin__btn admin__btn--outline admin__btn--danger"
+                                (click)="onDelete(menu._id, menu.menu_name)">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

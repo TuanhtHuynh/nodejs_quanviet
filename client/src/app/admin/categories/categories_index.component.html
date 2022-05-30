@@ -1,0 +1,58 @@
+<div class="categories-wrapper">
+    <div class="admin__top">
+        <div></div>
+        <a routerLink="/admin/danhmuc/new"
+           class="admin__btn admin__btn--primary">Thêm danh mục</a>
+    </div>
+    <div>Hiển thị {{ total }} sản phẩm</div>
+    <div class="table__response">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th (click)="onSort('_id', order)"
+                        class="table__header table__header--sort">
+                        <i class="fas table__icon--sort"
+                           [ngClass]="{'fa-caret-up': order === 'asc', 
+                               'fa-caret-down': order === 'desc', 
+                               'opacity-0': sort !== '_id'}"></i>
+                        <span class="ml">#</span>
+                    </th>
+                    <th (click)="onSort('name', order)"
+                        class="table__header table__header--sort">
+                        <i class="fas table__icon--sort"
+                           [ngClass]="{'fa-caret-up': order === 'asc', 
+                               'fa-caret-down': order === 'desc', 
+                               'opacity-0': sort !== 'name'}"></i>
+                        <span class="ml">Tên danh mục</span>
+                    </th>
+                    <th class="
+                              table__header
+                              table__action__cell">
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table__row"
+                    *ngFor="let category of listCategories">
+                    <td class="table__cell text-center">{{ category._id }}</td>
+                    <td class="table__cell">{{ category.name }}</td>
+                    <td class="table__cell">
+                        <a class="admin__btn--outline admin__btn--warn mr"
+                           [routerLink]="['edit', category._id]">
+                            <i class="far fa-edit"></i>
+                        </a>
+                        <a class="admin__btn--outline admin__btn--danger"
+                           [routerLink]="['delete', category._id]">
+                            <i class="far fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <app-pagination [page]="page"
+                    [totalpages]="pages"
+                    *ngIf="pages"
+                    (onChange)="onPagination($event)">
+    </app-pagination>
+</div>

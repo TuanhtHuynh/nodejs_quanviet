@@ -1,0 +1,11 @@
+<div class="product-container">
+    <div class="product_cards"
+         *ngFor="let product of listProducts">
+        <div class="product__img">
+            <img src="http://localhost:3000/uploads/{{product.cover}}">
+        </div>
+        <div class="product_name">
+            {{product.product_name}}
+        </div>
+    </div>
+</div>

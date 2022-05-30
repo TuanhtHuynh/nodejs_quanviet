@@ -1,0 +1,32 @@
+<div class="admin__form">
+    <div class="form__header">Thêm danh mục</div>
+    <div class="alert"
+         *ngIf="message"
+         [ngClass]="{'alert--success': message.type === 'success', 
+         'alert--danger': message.type === 'danger'}">
+        {{message.intro}}
+    </div>
+    <div class="admin__top">
+        <div></div>
+        <a [routerLink]="['/admin/danhmuc']"
+           routerLinkActive="router-link-active"
+           class="admin__btn admin__btn--warn float-r">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+    <form [formGroup]="addCategoryForm"
+          (submit)="createCaterory()">
+        <div class="form__group">
+            <label class="form__label">Ten danh muc</label>
+            <input type="text"
+                   class="form__input"
+                   formControlName="name">
+            <span class="form__valid"
+                  *ngIf="errors && errors.name">{{errors.name}}</span>
+        </div>
+        <div class="dflex">
+            <div></div>
+            <button class="admin__btn admin__btn--primary">Lưu danh mục</button>
+        </div>
+    </form>
+</div>

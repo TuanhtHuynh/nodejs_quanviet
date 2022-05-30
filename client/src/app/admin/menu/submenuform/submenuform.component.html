@@ -1,0 +1,35 @@
+<div class="admin__form">
+       <div class="form__header"
+            *ngIf="menu_id">{{form_title}}</div>
+       <app-alertmessage [message]="message"></app-alertmessage>
+       <form [formGroup]="submenuForm"
+             (submit)="submitForm()">
+              <input type="hidden"
+                     formControlName="_id">
+              <input type="hidden"
+                     formControlName="menu_id">
+              <div class="form__group">
+                     <label class="form__label">Tên menu</label>
+                     <input type="text"
+                            [class.is_invalid]="errors?.submenu_name"
+                            class="form__input"
+                            formControlName="submenu_name">
+                     <span class="form__valid"
+                           *ngIf="errors?.submenu_name">{{errors.submenu_name}}</span>
+              </div>
+              <div class="form__group">
+                     <label class="form__label">Url</label>
+                     <input type="text"
+                            [class.is_invalid]="errors?.url"
+                            class="form__input"
+                            formControlName="url">
+                     <span class="form__valid"
+                           *ngIf="errors?.url">{{errors.url}}</span>
+              </div>
+              <div class="dflex">
+                     <div></div>
+                     <button class="admin__btn admin__btn--primary"
+                             [disabled]="submenuForm.invalid">Lưu menu</button>
+              </div>
+       </form>
+</div>

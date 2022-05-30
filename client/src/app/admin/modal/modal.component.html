@@ -1,0 +1,9 @@
+<div id="modalbox"
+     class="modal"
+     [class.isOpen]="isOpen">
+    <div class="modal__content">
+        <ng-content></ng-content>
+        <div class="modal__close"
+             (click)="onCloseModal()">&times;</div>
+    </div>
+</div>

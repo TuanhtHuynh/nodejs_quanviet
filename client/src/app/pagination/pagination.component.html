@@ -1,0 +1,11 @@
+<div class="pagination"
+     *ngIf="totalpages>1">
+    <ul class="pagination__links">
+        <li class="pagination__item"
+            (click)="onLinkClick(item)"
+            [class.active]="page && page == item"
+            *ngFor="let item of items">
+            <a class="pagination__link">{{item}}</a>
+        </li>
+    </ul>
+</div>

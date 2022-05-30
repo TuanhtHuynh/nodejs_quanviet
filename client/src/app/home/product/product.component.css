@@ -1,0 +1,27 @@
+.product-container {
+  margin: 0 auto;
+  border: 1px solid orange;
+  padding: 0.3em;
+  display: grid;
+  min-height: 228px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  column-width: 200px;
+  grid-column-gap: 12px;
+  grid-row-gap: 12px;
+}
+
+.product__cards {
+  border: 1px solid #dfdfdf;
+  overflow: hidden;
+  width: 100%;
+}
+.product__img {
+  width: 100%;
+  max-height: auto;
+  overflow: hidden;
+}
+.product__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

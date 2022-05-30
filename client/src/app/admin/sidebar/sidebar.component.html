@@ -1,0 +1,25 @@
+<div class="sidebar"
+     [ngClass]="{'toggled': toggle}">
+    <div class="sidebar__brand">
+        <a class="sidebar__header"
+           routerLink="/admin">Quán Việt</a>
+        <div class="sidebar__toggle"
+             (click)="toggleButton()">
+            <div class="side__toggle--div">
+                <i class="fas fa-chevron-right fa-fw"></i>
+            </div>
+        </div>
+
+    </div>
+    <ul class="sidebar__links">
+        <li class="sidebar__item"
+            *ngFor="let item of SidebarMenus">
+            <a class="sidebar__link"
+               [routerLink]="item.routerLink">
+                <i class="fas sidebar__icon"
+                   [class]="item.icon"></i>
+                <div class="sidebar__text">{{item.name}}</div>
+            </a>
+        </li>
+    </ul>
+</div>

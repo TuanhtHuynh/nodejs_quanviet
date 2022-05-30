@@ -1,0 +1,32 @@
+<div class="menu-wrapper">
+    <nav class="menu__nav">
+        <div class="menu__brand">
+            <a routerLink=""
+               class="menu__header">Maru</a>
+        </div>
+        <div class="menu__toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="menu__links">
+            <li class="menu__item"
+                *ngFor="let menu of listMenus">
+                <a class="menu__link"
+                   (mouseover)="toggleMega(menu.submenus)"
+                   [routerLink]="menu.url">
+                    {{menu.menu_name}}
+                </a>
+                <div class="megamenu"
+                     *ngIf="menu.submenus.length>0"
+                     (mouseleave)="hideMega()"
+                     [class.isOpen]="isOpen">
+                    <ul class="mega__content"
+                        *ngFor="let sub of menu.submenus">
+                        <li class="mega__header">{{sub.submenu_name}}</li>
+                        <li class="mega__item"
+                            *ngFor="let item of sub.submenus">{{item.submenu_name}}</li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</div>

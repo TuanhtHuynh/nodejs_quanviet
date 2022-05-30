@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,500&display=swap");
+
+.admin-wrapper {
+  display: flex;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  transition: all 0.5s ease-out;
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  min-height: 100vh;
+  background: var(--dark-color);
+  color: #fff;
+  transition: all 0.5s ease;
+}
+.sidebar.closed {
+  width: 60px;
+}
+.sidebar__brand {
+  padding: 1rem 1.5rem;
+  position: relative;
+}
+.sidebar__header {
+  font-size: 1.2rem;
+  white-space: nowrap;
+}
+.sidebar.closed .sidebar__header {
+  visibility: hidden;
+  opacity: 0;
+}
+.sidebar__toggle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -15px;
+  background: var(--dark-color);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  box-shadow: 0 0 10px rgba(0 0 0 / 20%);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.sidebar__toggle:hover {
+  background-image: linear-gradient(
+    rgba(255 255 255 / 20%),
+    rgba(255 255 255 / 20%)
+  );
+}
+.sidebar__toggle i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #eee;
+  width: 100%;
+  height: 100%;
+}
+.sidebar__links {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sidebar__item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255 255 255 / 16%);
+  border-radius: 6px;
+  padding: 10px 20px;
+  margin: 0.2em;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.sidebar__icon {
+  display: flex;
+  margin-right: 1rem;
+  height: 100%;
+  width: 30px;
+}
+.sidebar__item:hover {
+  background-image: linear-gradient(rgba(255 255 255 / 20%) 0 0);
+}
+.sidebar__link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #eee;
+  height: 100%;
+  width: 100%;
+}
+.sidebar__text {
+  white-space: nowrap;
+}
+.sidebar.closed .sidebar__text {
+  visibility: hidden;
+  opacity: 0;
+}
+.admin__main {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  background: var(--bg-light);
+  width: 100%;
+}
+.admin__header {
+  font-size: 2rem;
+}

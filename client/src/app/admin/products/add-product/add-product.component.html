@@ -1,0 +1,65 @@
+<div class="admin__form">
+    <div class="form__header">{{form_title}}</div>
+    <app-alertmessage [message]="message"></app-alertmessage>
+    <div class="admin__top">
+        <div></div>
+        <a [routerLink]="['/admin/sanpham']"
+           class="admin__btn admin__btn--warn float-r">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+    <form [formGroup]="addProductForm"
+          (submit)="submitForm()">
+        <input type="hidden"
+               formControlName="uid">
+        <div class="form__group">
+            <label class="form__label">Tên sản phẩm</label>
+            <input type="text"
+                   [class.is_invalid]="errors?.product_name"
+                   class="form__input"
+                   formControlName="product_name">
+            <span class="form__valid"
+                  *ngIf="errors?.product_name">{{errors.product_name}}</span>
+        </div>
+        <div class="form__group">
+            <label class="form__label">Giá bán</label>
+            <input type="text"
+                   class="form__input"
+                   [class.is_invalid]="errors?.price"
+                   formControlName="price">
+            <span class="form__valid"
+                  *ngIf="errors?.price">{{errors.price}}</span>
+            <!-- oninput="this.value=this.value.replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, '.')" -->
+        </div>
+        <div class="form__group">
+            <label class="form__label">Danh mục</label>
+            <select class="form__options"
+                    [compareWith]="comparasionCategory"
+                    formControlName="category">
+                <option [ngValue]="null"
+                        disabled>Chọn danh mục</option>
+                <option [ngValue]="item"
+                        *ngFor="let item of listCategories">{{item.name}}{{item._id}}</option>
+            </select>
+            <span class="form__valid"
+                  *ngIf="category?.invalid">Vui lòng chọn danh mục</span>
+        </div>
+        <div class="form__group">
+            <label class="form__label">hình đại diện</label>
+            <app-fileupload (afterUpload)="afterUpload($event)"
+                            [form]="addProductForm"
+                            [imageURL]="imageURL"
+                            formcontrolname="cover"></app-fileupload>
+        </div>
+        <div class="form__group">
+            <label class="form__label">mô tả</label>
+            <ckeditor [editor]="editor"
+                      formControlName="description"></ckeditor>
+        </div>
+        <div class="dflex">
+            <div></div>
+            <button class="admin__btn admin__btn--primary"
+                    [disabled]="addProductForm.invalid">Lưu danh mục</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,26 @@
+<div class="form__row border"
+     *ngIf="form"
+     [formGroup]="form">
+    <input type="file"
+           class="form__inputfile"
+           (change)="onFileSelected($event)"
+           formControlName="{{formcontrolname}}"
+           *ngIf="formcontrolname">
+    <button type="button"
+            [disabled]="!fileSelected"
+            class="admin__btn--outline admin__btn--light"
+            (click)="onUpload()">
+        <i class="fas fa-upload"></i>
+    </button>
+    <!-- formControlName="{{formcontrolname}}" -->
+
+</div>
+<span *ngIf="fileMessage"
+      [class]="filecssClass()">{{ fileMessage.intro }}</span>
+<!-- <div class="form__row"> -->
+<div class="preview_box"
+     *ngIf="imageURL">
+    <img class="form__image"
+         [src]="imageURL !== undefined ? 'http://localhost:3000/uploads/'+imageURL : ''">
+</div>
+<!-- </div> -->

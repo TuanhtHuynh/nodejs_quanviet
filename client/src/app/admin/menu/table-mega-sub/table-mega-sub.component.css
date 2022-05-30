@@ -1,0 +1,15 @@
+.table__child {
+  width: 100%;
+  margin-left: 1rem;
+}
+.table__cell--child {
+  width: 100%;
+}
+.table__row--child {
+  padding: 2rem;
+}
+
+.table__cell--child {
+  max-width: 120px;
+  padding: 1rem;
+}

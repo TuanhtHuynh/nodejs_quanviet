@@ -1,0 +1,7 @@
+.categories-wrapper {
+  width: 100%;
+}
+
+.categories__button {
+  display: flex;
+}

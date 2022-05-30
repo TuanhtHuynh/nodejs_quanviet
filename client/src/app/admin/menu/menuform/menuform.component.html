@@ -1,0 +1,59 @@
+<div class="admin__form">
+    <div class="form__header">{{form_title}}</div>
+    <app-alertmessage [message]="message"></app-alertmessage>
+    <div class="admin__top">
+        <div></div>
+        <a [routerLink]="['/admin/menu']"
+           class="admin__btn admin__btn--warn float-r">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+    <form [formGroup]="menuForm"
+          (submit)="submitForm()">
+        <input type="hidden"
+               formControlName="_id">
+        <div class="form__group">
+            <label class="form__label">Tên menu</label>
+            <input type="text"
+                   [class.is_invalid]="errors?.menu_name"
+                   class="form__input"
+                   formControlName="menu_name">
+            <span class="form__valid"
+                  *ngIf="errors?.menu_name">{{errors.menu_name}}</span>
+        </div>
+        <div class="dflex">
+            <div></div>
+            <button class="admin__btn admin__btn--primary"
+                    [disabled]="menuForm.invalid">Lưu menu</button>
+        </div>
+    </form>
+
+    <app-table-mega-header [listMenuHeader]="Submenus"
+                           (ondelete)="onSubHeaderDelete($event)"
+                           (onaddmegu_item)="onAddMegaHeader($event)">
+        <button btnNew
+                (click)="onShowModal()"
+                class="admin__btn admin__btn--warn">
+            <i class="fas fa-plus mr"></i> Thêm menu mega
+        </button>
+    </app-table-mega-header>
+</div>
+
+<!-- Modal add submenu (mega header): mon viet, do uong ... -->
+<app-modal [isOpen]="isOpen">
+    <app-submenuform form_title="Thêm Mega Header"
+                     [menu_id]="menuid"
+                     *ngIf="menuid"
+                     (afterSubmit)="aftersubmit()">
+    </app-submenuform>
+</app-modal>
+
+<!-- Modal add subemnu of submenu (mega item): pho, cafe ... -->
+<app-modal [isOpen]="isOpenAddMegaItem">
+    <app-submenu2form form_title="Thêm Mega menu"
+                      [menu_id]="submenu_info.id"
+                      [menu_name]="submenu_info.menu_name"
+                      *ngIf="submenu_info.id"
+                      (afterSubmit)="aftersubmitAddMegaItem()">
+    </app-submenu2form>
+</app-modal>

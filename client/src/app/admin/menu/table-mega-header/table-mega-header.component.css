@@ -1,0 +1,12 @@
+.table__collapse {
+  cursor: pointer;
+}
+
+.table__row--child.isOpen {
+  visibility: visible;
+  width: 100%;
+}
+.table__row--child {
+  visibility: collapse;
+  transition: heigth 0.3s ease-in-out;
+}
